@@ -85,6 +85,14 @@ const ProductList = () => {
             clearFilters={clearFilters}
           />
           <div className="my-4 px-4 w-75">
+            <div className=" mb-3 mt-1">
+              <h5 className="d-inline ">Showing All Products</h5>
+              <span className="mx-3">
+                <small className="text-secondary ">
+                  ( Showing {filteredDataByFilter.length} products)
+                </small>
+              </span>
+            </div>
             <ProductCard productsData={filteredDataByFilter} />
           </div>
         </>
