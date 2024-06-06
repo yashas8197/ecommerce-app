@@ -3,6 +3,7 @@ import ProductCard from "../components/ProductCard";
 import { useEffect, useState } from "react";
 import FilterPanel from "../components/FilterPanel";
 import useFetch from "../utils/useFetch";
+import { ALL_PRODUCT_API } from "../utils/constants";
 
 const ProductList = () => {
   const { productCat } = useParams();
@@ -12,9 +13,7 @@ const ProductList = () => {
   const [selectedSort, setSelectedSort] = useState("");
   const [productsData, setProductsData] = useState([]);
 
-  const { data, loading, error } = useFetch(
-    "https://af37566b-5685-423d-9575-48ddc8d01c59-00-3ehyq3khp5mt8.kirk.replit.dev/products",
-  );
+  const { data, loading, error } = useFetch(ALL_PRODUCT_API);
 
   useEffect(() => {
     setProductsData(data?.product);
@@ -75,8 +74,6 @@ const ProductList = () => {
   } else {
     productsData;
   }
-
-  console.log(productsData);
 
   const clearFilters = () => {
     setSelectedCategory([productCat]);

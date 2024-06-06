@@ -55,8 +55,7 @@ const ProductCard = ({ productsData }) => {
               </div>
               <div className="position-absolute bottom-0 start-0 rounded bg-primary">
                 <p className="fw-bold text-white px-2 mb-0">
-                  ⭐{product.rating} |{" "}
-                  {!product?.reviews ? "2.5k" : product?.reviews}
+                  ⭐{product.rating} |{product?.reviews}
                 </p>
               </div>
               <div
