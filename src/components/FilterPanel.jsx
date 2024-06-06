@@ -7,6 +7,8 @@ const FilterPanel = ({
   priceRange,
   maxValue,
   clearFilters,
+  filterByPrice,
+  selectedSort,
 }) => {
   function isCategoryExist(cat) {
     return selectedCategory.includes(cat);
@@ -149,13 +151,14 @@ const FilterPanel = ({
         <div className="my-4">
           <h5>Sort by</h5>
 
-          <form>
+          <form onChange={filterByPrice}>
             <div className="form-check">
               <input
                 className="form-check-input"
                 value="Low to High"
                 type="radio"
                 name="sort"
+                checked={selectedSort === "Low to High"}
               />
               <label
                 className="form-check-label text-secondary "
@@ -170,6 +173,7 @@ const FilterPanel = ({
                 value="High to Low"
                 type="radio"
                 name="sort"
+                checked={selectedSort === "High to Low"}
               />
               <label
                 className="form-check-label text-secondary "

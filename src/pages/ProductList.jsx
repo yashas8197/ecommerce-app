@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilterPanel from "../components/FilterPanel";
 import useFetch from "../utils/useFetch";
 
@@ -9,10 +9,16 @@ const ProductList = () => {
   const [selectedCategory, setSelectedCategory] = useState([productCat]);
   const [selectedRating, setSelectedRating] = useState("");
   const [selectedPriceRange, setSelectedPriceRange] = useState("");
+  const [selectedSort, setSelectedSort] = useState("");
+  const [productsData, setProductsData] = useState([]);
 
   const { data, loading, error } = useFetch(
     "https://af37566b-5685-423d-9575-48ddc8d01c59-00-3ehyq3khp5mt8.kirk.replit.dev/products",
   );
+
+  useEffect(() => {
+    setProductsData(data?.product);
+  }, [data]);
 
   const maxValue = data?.product.reduce(
     (acc, curr) => (parseInt(curr.price) > acc ? parseInt(curr.price) : acc),
@@ -44,24 +50,40 @@ const ProductList = () => {
     setPriceRange(value);
   };
 
-  const filteredDataByFilter = data?.product.filter((product) => {
-    const matchesCategory =
-      selectedCategory.includes(product.category) ||
-      selectedCategory.length === 0;
-    const matchesRating =
-      selectedRating === "" || product.rating >= +selectedRating;
-    const matchedPriceRange =
-      selectedPriceRange === "" || product.price <= +selectedPriceRange;
-    return matchesCategory && matchesRating && matchedPriceRange;
-  });
+  const filterByPrice = (e) => {
+    const { value } = e.target;
+    setSelectedSort(value);
+  };
 
-  console.log(filteredDataByFilter);
+  const filteredDataByFilter =
+    productsData &&
+    productsData.filter((product) => {
+      const matchesCategory =
+        selectedCategory.includes(product.category) ||
+        selectedCategory.length === 0;
+      const matchesRating =
+        selectedRating === "" || product.rating >= +selectedRating;
+      const matchedPriceRange =
+        selectedPriceRange === "" || product.price <= +selectedPriceRange;
+      return matchesCategory && matchesRating && matchedPriceRange;
+    });
+
+  if (selectedSort === "Low to High") {
+    productsData.sort((a, b) => a.price - b.price);
+  } else if (selectedSort === "High to Low") {
+    productsData.sort((a, b) => b.price - a.price);
+  } else {
+    productsData;
+  }
+
+  console.log(productsData);
 
   const clearFilters = () => {
     setSelectedCategory([productCat]);
     setSelectedRating(null);
     setSelectedPriceRange("");
     setPriceRange(maxValue);
+    setSelectedSort("");
   };
 
   return (
@@ -83,13 +105,17 @@ const ProductList = () => {
             priceRange={priceRange}
             maxValue={maxValue}
             clearFilters={clearFilters}
+            filterByPrice={filterByPrice}
+            selectedSort={selectedSort}
           />
           <div className="my-4 px-4 w-75">
             <div className=" mb-3 mt-1">
               <h5 className="d-inline ">Showing All Products</h5>
               <span className="mx-3">
                 <small className="text-secondary ">
-                  ( Showing {filteredDataByFilter.length} products)
+                  ( Showing{" "}
+                  {filteredDataByFilter && filteredDataByFilter.length}{" "}
+                  products)
                 </small>
               </span>
             </div>

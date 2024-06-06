@@ -26,10 +26,7 @@ const Home = () => {
             textDecoration: "none",
           }}
         >
-          <div
-            className="card my-3 mx-2"
-            onClick={(e) => console.log(e.currentTarget)}
-          >
+          <div className="card my-3 mx-2">
             <div className="row g-0">
               <div className="col-md-4">
                 <img
