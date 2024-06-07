@@ -15,7 +15,7 @@ const FilterPanel = ({
   }
 
   return (
-    <div className="w-25 mx-2 border-end">
+    <div className="w-25 mx-2 border-end ">
       <div className="container">
         <div className="d-flex justify-content-between align-items-center my-3">
           <h5>Filters</h5>
@@ -56,7 +56,11 @@ const FilterPanel = ({
               onChange={filterByCategory}
               style={{ cursor: "pointer" }}
             />
-            <label className="form-check-label" htmlFor="flexCheckDefault1" style={{ cursor: "pointer" }}>
+            <label
+              className="form-check-label"
+              htmlFor="flexCheckDefault1"
+              style={{ cursor: "pointer" }}
+            >
               Men
             </label>
           </div>
@@ -70,7 +74,11 @@ const FilterPanel = ({
               onChange={filterByCategory}
               style={{ cursor: "pointer" }}
             />
-            <label className="form-check-label" htmlFor="flexCheckDefault2" style={{ cursor: "pointer" }}>
+            <label
+              className="form-check-label"
+              htmlFor="flexCheckDefault2"
+              style={{ cursor: "pointer" }}
+            >
               Women
             </label>
           </div>
@@ -84,7 +92,11 @@ const FilterPanel = ({
               onChange={filterByCategory}
               style={{ cursor: "pointer" }}
             />
-            <label className="form-check-label" htmlFor="flexCheckDefault3" style={{ cursor: "pointer" }}>
+            <label
+              className="form-check-label"
+              htmlFor="flexCheckDefault3"
+              style={{ cursor: "pointer" }}
+            >
               Kids
             </label>
           </div>

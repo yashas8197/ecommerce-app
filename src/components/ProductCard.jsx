@@ -16,7 +16,7 @@ const ProductCard = ({ productsData }) => {
   };
 
   return (
-    <div className="row bg-body-tertiary rounded">
+    <div className="row bg-body-tertiary rounded ">
       {productsData?.map((product) => (
         <div key={product._id} className="col-sm-4 my-4">
           <div className="card" style={{ width: "18rem" }}>
