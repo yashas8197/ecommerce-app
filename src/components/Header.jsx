@@ -1,12 +1,13 @@
 import { Heart, ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SEARCH_PRODUCT_TITLE_API } from "../utils/constants";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestion, setShowSuggestion] = useState(false);
+  const navigate = useNavigate();
 
   const handleSearchQuery = (e) => {
     setSearchQuery(e.target.value);
@@ -23,7 +24,6 @@ const Header = () => {
     if (searchQuery === "" || searchQuery === null) {
       return;
     }
-    console.log(searchQuery);
     const timer = setTimeout(() => getSearchSuggestion(), 200);
 
     return () => {
@@ -47,13 +47,17 @@ const Header = () => {
 */
 
   const handleOnBlur = () => {
-    setShowSuggestion(false);
-    setSearchQuery("");
-    setSuggestions([]);
+    setTimeout(() => {
+      setShowSuggestion(false);
+    }, 200);
   };
 
   const handleOnFocus = () => {
     setShowSuggestion(true);
+  };
+
+  const onClickHandler = (productId) => {
+    navigate(`/productDetials/${productId}`);
   };
 
   return (
@@ -96,12 +100,30 @@ const Header = () => {
             marginLeft: "23rem",
             zIndex: 2000,
           }}
-          className="position-absolute"
+          className="position-absolute "
         >
-          <ul className="list-group" style={{ width: "44vw" }}>
+          <ul
+            className="list-group overflow-auto"
+            style={{ width: "44vw", height: "50vh" }}
+          >
             {suggestions.map((suggestion) => (
-              <li key={suggestion._id} className="list-group-item">
-                {suggestion.title}
+              <li
+                onMouseDown={() => onClickHandler(suggestion._id, suggestion)}
+                style={{ cursor: "pointer" }}
+                key={suggestion._id}
+                className="list-group-item d-flex justify-content-between"
+              >
+                <div className="w-50">
+                  <img
+                    src={suggestion.image}
+                    className="img-fluid w-50 rounded "
+                  />
+                </div>
+                <div className="w-75">
+                  <p className="display-6">{suggestion.title}</p>
+                  <p className="fs-7">{suggestion.description}</p>
+                  <span className="fw-bold">₹{suggestion.price}</span>
+                </div>
               </li>
             ))}
           </ul>
