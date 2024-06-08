@@ -11,7 +11,6 @@ const ProductDetail = () => {
   console.log(data);
 
   const handleOnClick = (e) => {
-    // Event bubbling jargon
     const cardElement = e.target.closest("[data-id]");
     const cardId = cardElement?.getAttribute("data-id");
     if (cardId) {
@@ -34,6 +33,11 @@ const ProductDetail = () => {
                     src={data?.product?.image}
                     className="img-fluid rounded"
                     alt="product"
+                    style={{
+                      width: "100%",
+                      height: "500px",
+                      objectFit: "cover"
+                    }}
                   />
 
                   <div
@@ -83,26 +87,27 @@ const ProductDetail = () => {
                     </span>
                   </div>
                   <hr />
-                  <p className="card-text fs-5">
-                    <strong>Availability: </strong>
-                    {data?.product.in_stock ? "In Stock" : "Out of Stock"}
-                  </p>
-                  <p className="card-text fs-5">
-                    <strong>Description: </strong>
-                    {data?.product.description}
-                  </p>
-                  <p className="card-text fs-5">
-                    <strong>Size: </strong>
-                    {data?.product.size}
-                  </p>
-                  <p className="card-text fs-5">
-                    <strong>Delivery: </strong>
-                    in {data?.product.delivery_time} days
-                  </p>
                   <div className="">
-                    <button className="btn btn-primary w-100">
-                      Add to Cart
-                    </button>
+                    <p className="card-text fs-5">
+                      <strong>Availability: </strong>
+                      {data?.product.in_stock ? "In Stock" : "Out of Stock"}
+                    </p>
+                    <p className="card-text fs-5">
+                      <strong>Description: </strong>
+                      {data?.product.description}
+                    </p>
+                    <p className="card-text fs-5">
+                      <strong>Size: </strong>
+                      {data?.product.size}
+                    </p>
+                    <p className="card-text fs-5">
+                      <strong>Delivery: </strong>
+                      in {data?.product.delivery_time} days
+                    </p>
+                  </div>
+                  <hr/>
+                  <div className="d-grid gap-2">
+                    <button className="btn btn-primary">Add to Cart</button>
                   </div>
                 </div>
               </div>

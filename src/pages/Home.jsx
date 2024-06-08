@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const cardImageStyle = {
+    height: "200px", // Adjust this height as needed
+    objectFit: "cover",
+  };
+
+  const cardStyle = {
+    maxWidth: "540px",
+    cursor: "pointer",
+    textDecoration: "none",
+  };
+
   return (
     <>
       <div style={{ overflow: "hidden" }}>
@@ -16,21 +27,15 @@ const Home = () => {
         />
       </div>
       <div className="d-flex container">
-        <Link
-          to="/product/Men"
-          style={{
-            maxWidth: "540px",
-            cursor: "pointer",
-            textDecoration: "none",
-          }}
-        >
+        <Link to="/product/Men" style={cardStyle}>
           <div className="card my-3 mx-2">
             <div className="row g-0">
               <div className="col-md-4">
                 <img
-                  src="https://res.cloudinary.com/donqbxlnc/image/upload/v1648896074/fashify/e3220043-d4db-4c8a-9a5e-80459db0aae31648190230381-Roadster-_HL_fan7lo.webp"
-                  className="img-fluid rounded-start"
+                  src="https://res.cloudinary.com/dlrlwy7hg/image/upload/c_crop,ar_3:4/v1717837965/tq8d4qbrypyyrsackswi.jpg"
+                  className="img-fluid rounded-start w-100"
                   alt="..."
+                  style={cardImageStyle}
                 />
               </div>
               <div className="col-md-8">
@@ -45,21 +50,15 @@ const Home = () => {
             </div>
           </div>
         </Link>
-        <Link
-          to="/product/Women"
-          style={{
-            maxWidth: "540px",
-            cursor: "pointer",
-            textDecoration: "none",
-          }}
-        >
+        <Link to="/product/Women" style={cardStyle}>
           <div className="card my-3 mx-2">
             <div className="row g-0">
               <div className="col-md-4">
                 <img
-                  src="https://res.cloudinary.com/donqbxlnc/image/upload/v1648896554/fashify/4f54b81d-51ca-4526-bab3-04066d977f5a1648368745195-Levis_keqmez.webp"
+                  src="https://res.cloudinary.com/dlrlwy7hg/image/upload/c_crop,ar_3:4/v1717837696/ber5cx7vjzfglltqrclx.jpg"
                   className="img-fluid rounded-start"
                   alt="..."
+                  style={cardImageStyle}
                 />
               </div>
               <div className="col-md-8">
@@ -74,21 +73,15 @@ const Home = () => {
             </div>
           </div>
         </Link>
-        <Link
-          to="/product/Kids"
-          style={{
-            maxWidth: "540px",
-            cursor: "pointer",
-            textDecoration: "none",
-          }}
-        >
+        <Link to="/product/Kids" style={cardStyle}>
           <div className="card my-3 mx-2">
             <div className="row g-0">
               <div className="col-md-4">
                 <img
-                  src="https://res.cloudinary.com/donqbxlnc/image/upload/v1648516936/fashify/67b2f5d2-3064-4389-98e4-8ce05b4c354f1647513608806-Allen-Solly-Junior-Boys-Navy-Blue-Slim-Fit-Geometric-Print-P-1_ecyumj.webp"
+                  src="https://res.cloudinary.com/dlrlwy7hg/image/upload/v1717848030/indsmdz1u3ueekmgtyu9.jpg"
                   className="img-fluid rounded-start"
                   alt="..."
+                  style={cardImageStyle}
                 />
               </div>
               <div className="col-md-8">
